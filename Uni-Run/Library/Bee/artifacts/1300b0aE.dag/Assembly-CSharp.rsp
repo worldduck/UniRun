@@ -375,6 +375,7 @@
 -r:"Library/Bee/artifacts/1300b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/02.Scripts/BackgroundLoop.cs"
 "Assets/02.Scripts/GameManager.cs"
+"Assets/02.Scripts/MenuButtonController.cs"
 "Assets/02.Scripts/Platform.cs"
 "Assets/02.Scripts/PlatformSpawner.cs"
 "Assets/02.Scripts/PlayerController.cs"
