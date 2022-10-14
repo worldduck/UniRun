@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuButtonController : MonoBehaviour
 {
@@ -20,22 +21,18 @@ public class MenuButtonController : MonoBehaviour
 
     public void GoIntroScene()
     {
-
+        SceneManager.LoadScene("IntroScene");
     }
 
     public void GameQuit()
     {
         Application.Quit();
+        Debug.Log("게임이 종료 되었습니다.");
     }
 
-    void Start()
+    public void StartGame()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        SceneManager.LoadScene("Sub");
+        Time.timeScale = 1;
     }
 }
