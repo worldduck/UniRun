@@ -3,6 +3,7 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - BackgroundLoop
     - GameManager
+    - MenuButtonController
     - Platform
     - PlatformSpawner
     - PlayerController
@@ -39,8 +40,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -49,8 +52,10 @@ ScriptsOnlyBuild:
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
+    - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
+    - UnityEngine.UI.Image
     - UnityEngine.UI.Shadow
     - UnityEngine.UI.Text
   serializedClasses:
@@ -70,18 +75,46 @@ ScriptsOnlyBuild:
     - TMPro.TMP_Style
     - TMPro.VertexGradient
     UnityEngine.CoreModule:
+    - UnityEngine.Events.ArgumentCache
     - UnityEngine.Events.PersistentCallGroup
+    - UnityEngine.Events.PersistentListenerMode
     UnityEngine.TextCoreFontEngineModule:
     - UnityEngine.TextCore.FaceInfo
     - UnityEngine.TextCore.Glyph
     - UnityEngine.TextCore.GlyphMetrics
     - UnityEngine.TextCore.GlyphRect
     UnityEngine.UI:
+    - UnityEngine.UI.AnimationTriggers
+    - UnityEngine.UI.Button/ButtonClickedEvent
+    - UnityEngine.UI.ColorBlock
     - UnityEngine.UI.FontData
     - UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
-  methodsToPreserve: []
+    - UnityEngine.UI.Navigation
+    - UnityEngine.UI.SpriteState
+  methodsToPreserve:
+  - assembly: Assembly-CSharp
+    fullTypeName: MenuButtonController
+    methodName: GameQuit
+  - assembly: Assembly-CSharp
+    fullTypeName: MenuButtonController
+    methodName: StartGame
+  - assembly: Assembly-CSharp
+    fullTypeName: MenuButtonController
+    methodName: Continue
+  - assembly: Assembly-CSharp
+    fullTypeName: MenuButtonController
+    methodName: Menu_button
+  - assembly: Assembly-CSharp
+    fullTypeName: MenuButtonController
+    methodName: StartGame
+  - assembly: Assembly-CSharp
+    fullTypeName: MenuButtonController
+    methodName: GoIntroScene
+  - assembly: Assembly-CSharp
+    fullTypeName: MenuButtonController
+    methodName: GameQuit
   sceneClasses:
-    Assets/01.Scenes/Main.unity:
+    Assets/01.Scenes/IntroScene.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -95,6 +128,79 @@ ScriptsOnlyBuild:
     - Class: 48
       Script: {instanceID: 0}
     - Class: 49
+      Script: {instanceID: 0}
+    - Class: 61
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 1572}
+    - Class: 114
+      Script: {instanceID: 1756}
+    - Class: 114
+      Script: {instanceID: 1766}
+    - Class: 114
+      Script: {instanceID: 2352}
+    - Class: 114
+      Script: {instanceID: 2864}
+    - Class: 114
+      Script: {instanceID: 3126}
+    - Class: 114
+      Script: {instanceID: 3486}
+    - Class: 114
+      Script: {instanceID: 4638}
+    - Class: 114
+      Script: {instanceID: 4774}
+    - Class: 114
+      Script: {instanceID: 5108}
+    - Class: 114
+      Script: {instanceID: 5416}
+    - Class: 114
+      Script: {instanceID: 6038}
+    - Class: 114
+      Script: {instanceID: 6782}
+    - Class: 114
+      Script: {instanceID: 6986}
+    - Class: 114
+      Script: {instanceID: 7404}
+    - Class: 114
+      Script: {instanceID: 8586}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/01.Scenes/Sub.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
       Script: {instanceID: 0}
     - Class: 50
       Script: {instanceID: 0}
@@ -119,41 +225,39 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1752}
+      Script: {instanceID: 1572}
     - Class: 114
-      Script: {instanceID: 1762}
+      Script: {instanceID: 1756}
     - Class: 114
-      Script: {instanceID: 1848}
+      Script: {instanceID: 1766}
     - Class: 114
-      Script: {instanceID: 2348}
+      Script: {instanceID: 1852}
     - Class: 114
-      Script: {instanceID: 2628}
+      Script: {instanceID: 2632}
     - Class: 114
-      Script: {instanceID: 2860}
+      Script: {instanceID: 2864}
     - Class: 114
-      Script: {instanceID: 3122}
+      Script: {instanceID: 3126}
     - Class: 114
-      Script: {instanceID: 4634}
+      Script: {instanceID: 3486}
     - Class: 114
-      Script: {instanceID: 4770}
+      Script: {instanceID: 5416}
     - Class: 114
-      Script: {instanceID: 5104}
+      Script: {instanceID: 6038}
     - Class: 114
-      Script: {instanceID: 6032}
+      Script: {instanceID: 6384}
     - Class: 114
-      Script: {instanceID: 6378}
+      Script: {instanceID: 6516}
     - Class: 114
-      Script: {instanceID: 6510}
+      Script: {instanceID: 6782}
     - Class: 114
-      Script: {instanceID: 6776}
+      Script: {instanceID: 6986}
     - Class: 114
-      Script: {instanceID: 6980}
+      Script: {instanceID: 7404}
     - Class: 114
-      Script: {instanceID: 7398}
+      Script: {instanceID: 8586}
     - Class: 114
-      Script: {instanceID: 8580}
-    - Class: 114
-      Script: {instanceID: 8632}
+      Script: {instanceID: 8638}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -205,7 +309,7 @@ ScriptsOnlyBuild:
     className: SignalAsset
   - hash:
       serializedVersion: 2
-      Hash: 790419d3a98777c75cae6d6b785537dc
+      Hash: 02645861220696413edb2498d41742d5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -757,6 +861,12 @@ ScriptsOnlyBuild:
     className: BufferManager
   - hash:
       serializedVersion: 2
+      Hash: 4d62a887a9d900acd13e3a9c447dba84
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MenuButtonController
+  - hash:
+      serializedVersion: 2
       Hash: b6514f552bd2ee9e736a5678aa7f7de3
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
@@ -1189,7 +1299,7 @@ ScriptsOnlyBuild:
     className: UnityOnMoveMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 675c9fd383481e76bdd9936fbfcd4887
+      Hash: 148c3295e9fe4465484b1a150df1bc74
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Platform
@@ -1339,5 +1449,6 @@ ScriptsOnlyBuild:
     className: UnityOnSliderValueChangedMessageListener
   platform: 13
   scenePathNames:
-  - Assets/01.Scenes/Main.unity
-  playerPath: C:/Users/301-02/Desktop/Build/Uni-Run.apk
+  - Assets/01.Scenes/IntroScene.unity
+  - Assets/01.Scenes/Sub.unity
+  playerPath: C:/Users/301-02/Desktop/Build/Uni-Run_sub.apk

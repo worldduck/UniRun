@@ -6,6 +6,8 @@ public class Platform : MonoBehaviour
 {
     public GameObject[] obstacles; // 장애물 오브젝트들
     public GameObject[] coins; // 코인 애니메이션 오브젝트들
+    public GameObject[] hearts; // 체력 오브젝트들
+
     private bool stepped = false; // 플레이어 캐릭터가 밟았는가
 
     // 컴포넌트가 활성화될 때마다 매번 실행되는 메서드
@@ -37,6 +39,11 @@ public class Platform : MonoBehaviour
         foreach (GameObject b in coins)
         {
             b.SetActive(Random.Range(0, 3) == 0 ? true : false);
+        }
+
+        foreach (GameObject c in hearts)
+        {
+            c.SetActive(Random.Range(0, 7) == 0 ? true : false);
         }
     }
     

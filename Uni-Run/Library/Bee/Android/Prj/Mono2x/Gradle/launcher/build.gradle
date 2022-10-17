@@ -16,7 +16,7 @@ android {
     defaultConfig {
         minSdkVersion 22
         targetSdkVersion 30
-        applicationId 'com.ShinKyungHoon.UniRun'
+        applicationId 'com.ShinKyungHoon.UniRun_sub'
         ndk {
             abiFilters 'armeabi-v7a'
         }

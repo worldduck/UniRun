@@ -69,9 +69,15 @@ public class GameManager : MonoBehaviour
         gameoverUI.SetActive(true);
     }
 
-    public void playerHit()
+    public void reduceHeart()
     {
         heartimages[currentIndex].SetActive(false);
         currentIndex++;
+    }
+
+    public void increseHeart()
+    {
+        currentIndex--;
+        heartimages[currentIndex].SetActive(true);
     }
 }

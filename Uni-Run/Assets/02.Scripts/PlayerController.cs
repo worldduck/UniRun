@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public AudioClip deathClip; // 사망 시 재생할 오디오 클립
-    public float jumpForce = 700f; // 점프 힘
+    public float jumpForce = 350f; // 점프 힘
     private int jumpCount = 0; // 누적 점프 횟수
     private bool isGrounded = false; // 바닥에 닿았는지 나타냄
     private bool isDead = false; // 사망상태
@@ -16,11 +16,6 @@ public class PlayerController : MonoBehaviour
     private Animator animator; // 사용할 애니메이터 컴포넌트
     private AudioSource playerAudio; // 사용할 오디오 소스 컴포넌트
 
-    public GameObject coin;
-
-
-
-    // Start is called before the first frame update
     private void Start()
     {
         // 초기화
@@ -71,6 +66,7 @@ public class PlayerController : MonoBehaviour
         // 사망효과음 재생
         playerAudio.Play();
 
+        playerRigidbody.AddForce(new Vector2(-150f, 200f));
         // 속도를 제로(0, 0)로 변경
         playerRigidbody.velocity = Vector2.zero;
         // 사망 상태를 true로 변경
@@ -90,7 +86,8 @@ public class PlayerController : MonoBehaviour
 
         else if (other.tag == "Obstacle" && hitCount < 3 && !isDead)
         {
-            GameManager.instance.playerHit();
+            int countTime = 0;
+            GameManager.instance.reduceHeart();
             hitCount++;
         }
 
@@ -102,6 +99,17 @@ public class PlayerController : MonoBehaviour
         else if (other.tag == "Coin")
         {
             GameManager.instance.AddScore(10);
+            other.gameObject.SetActive(false);
+        }
+
+        else if (other.tag == "Heart")
+        {
+            if(hitCount >= 1 && hitCount <= 3)
+            {
+                GameManager.instance.increseHeart();
+                hitCount--;
+                other.gameObject.SetActive(false);
+            }
         }
     }
 

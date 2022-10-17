@@ -27,7 +27,6 @@ public class MenuButtonController : MonoBehaviour
     public void GameQuit()
     {
         Application.Quit();
-        Debug.Log("게임이 종료 되었습니다.");
     }
 
     public void StartGame()
