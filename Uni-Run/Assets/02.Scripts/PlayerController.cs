@@ -78,39 +78,71 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Dead" && !isDead)
+        switch (other.tag)
         {
-            // 충돌한 상대방의 태그가 Dead이며 아직 사망하지 않았다면 Die() 실행
-            Die();
-        }
+            case "Dead":
+                if (!isDead)
+                {
+                    Die();
+                }
+                break;
+            case "Obstacle":
+                if (hitCount <3 && !isDead)
+                {
+                    GameManager.instance.reduceHeart();
+                    hitCount++;
+                }
 
-        else if (other.tag == "Obstacle" && hitCount < 3 && !isDead)
-        {
-            int countTime = 0;
-            GameManager.instance.reduceHeart();
-            hitCount++;
-        }
-
-        else if (other.tag == "Obstacle" && hitCount >= 3 && !isDead)
-        {
-            Die();
-        }
-
-        else if (other.tag == "Coin")
-        {
-            GameManager.instance.AddScore(10);
-            other.gameObject.SetActive(false);
-        }
-
-        else if (other.tag == "Heart")
-        {
-            if(hitCount >= 1 && hitCount <= 3)
-            {
-                GameManager.instance.increseHeart();
-                hitCount--;
+                if (hitCount >= 3 && !isDead)
+                {
+                    Die();
+                }
+                    break;
+            case "Coin":
+                GameManager.instance.AddScore(10);
                 other.gameObject.SetActive(false);
-            }
+                break;
+            case "Heart":
+                if (hitCount >= 1 && hitCount <= 3)
+                {
+                    GameManager.instance.increseHeart();
+                    hitCount--;
+                    other.gameObject.SetActive(false);
+                }
+                break;
         }
+        //if (other.tag == "Dead" && !isDead)
+        //{
+        //    // 충돌한 상대방의 태그가 Dead이며 아직 사망하지 않았다면 Die() 실행
+        //    Die();
+        //}
+
+        //else if (other.tag == "Obstacle" && hitCount < 3 && !isDead)
+        //{
+        //    GameManager.instance.reduceHeart();
+        //    hitCount++;
+        //}
+
+        //else if (other.tag == "Obstacle" && hitCount >= 3 && !isDead)
+        //{
+        //    Die();
+        //}
+
+        //else if (other.tag == "Coin")
+        //{
+        //    GameManager.instance.AddScore(10);
+        //    other.gameObject.SetActive(false);
+        //}
+
+        //else if (other.tag == "Heart")
+        //{
+        //    if(hitCount >= 1 && hitCount <= 3)
+        //    {
+        //        GameManager.instance.increseHeart();
+        //        hitCount--;
+        //        other.gameObject.SetActive(false);
+        //    }
+        //}
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
