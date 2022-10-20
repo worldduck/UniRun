@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
                 }
                 break;
             case "Obstacle":
-                if (hitCount <3 && !isDead)
+                if (hitCount < 3 && !isDead)
                 {
                     GameManager.instance.reduceHeart();
                     hitCount++;
