@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private int jumpCount = 0; // 누적 점프 횟수
     private bool isGrounded = false; // 바닥에 닿았는지 나타냄
     private bool isDead = false; // 사망상태
-    private int hitCount = 0; // 장애물에 부딪힌 횟수
+    private int hitCount = 0; // 장애물 혹은 적에 부딪힌 횟수
 
     private Rigidbody2D playerRigidbody; // 사용할 리지드바디 컴포넌트
     private Animator animator; // 사용할 애니메이터 컴포넌트
